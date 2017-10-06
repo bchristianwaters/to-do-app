@@ -10,26 +10,45 @@ function onReady() {
       let title = newToDoText.value;
 
       // create a new li
-     let newLi = document.createElement('li');
+      let newLi = document.createElement('li');
 
-     // create a new input
-     let checkbox = document.createElement('input');
+      // create a new input
+      let checkbox = document.createElement('input');
+
+     // create the delete button
+     let deleteButton = document.createElement('button');
 
      // set the input's type to checkbox
      checkbox.type = "checkbox";
 
-     // set the title
-     newLi.textContent = title;
+     // set the delete button's type to button
+     deleteButton.type = "button"
 
-     // attach the checkbox to the li
-     newLi.appendChild(checkbox);
+       // set the title of the delete button
+       deleteButton.textContent = "Delete"
 
-     // attach the li to the ul
-     toDoList.appendChild(newLi);
+       // set the title
+       newLi.textContent = title;
 
-     //empty the input
-     newToDoText.value = '';
-    });
+       // attach the checkbox to the li
+       newLi.appendChild(checkbox);
+
+       // attach the delete button to the li
+       newLi.appendChild(deleteButton);
+
+       // attach the li to the ul
+       toDoList.appendChild(newLi);
+
+       //empty the input
+       newToDoText.value = '';
+
+       //delete button listener
+       deleteButton.addEventListener('click', event => {
+         event.preventDefault();
+         console.log("blah");
+         toDoList.removeChild(newLi);
+      });
+  });
 }
 
 window.onload = function() {
